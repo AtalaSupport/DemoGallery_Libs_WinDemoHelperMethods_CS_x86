@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5ABEB07A-C0B6-4B17-89A7-23761594015A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WinDemoHelperMethods</RootNamespace>
+    <AssemblyName>WinDemoHelperMethods</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Atalasoft.dotImage">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Atalasoft\DotImage 11.5\bin\4.6.2\x86\Atalasoft.dotImage.dll</HintPath>
+    </Reference>
+    <Reference Include="Atalasoft.dotImage.AdvancedDocClean">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Atalasoft\DotImage 11.5\bin\4.6.2\x64\Atalasoft.dotImage.AdvancedDocClean.dll</HintPath>
+    </Reference>
+    <Reference Include="Atalasoft.dotImage.CommonDecoders">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Atalasoft\DotImage 11.5\bin\4.6.2\x86\Atalasoft.dotImage.CommonDecoders.dll</HintPath>
+    </Reference>
+    <Reference Include="Atalasoft.dotImage.Dicom">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Atalasoft\DotImage 11.5\bin\4.6.2\x86\Atalasoft.dotImage.Dicom.dll</HintPath>
+    </Reference>
+    <Reference Include="Atalasoft.dotImage.Dwg">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Atalasoft\DotImage 11.5\bin\4.6.2\x86\Atalasoft.dotImage.Dwg.dll</HintPath>
+    </Reference>
+    <Reference Include="Atalasoft.dotImage.Heif">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Atalasoft\DotImage 11.5\bin\4.6.2\x86\Atalasoft.dotImage.Heif.dll</HintPath>
+    </Reference>
+    <Reference Include="Atalasoft.dotImage.Jbig2">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Atalasoft\DotImage 11.5\bin\4.6.2\x86\Atalasoft.dotImage.Jbig2.dll</HintPath>
+    </Reference>
+    <Reference Include="Atalasoft.dotImage.Jpeg2000">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Atalasoft\DotImage 11.5\bin\4.6.2\x86\Atalasoft.dotImage.Jpeg2000.dll</HintPath>
+    </Reference>
+    <Reference Include="Atalasoft.dotImage.Lib">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Atalasoft\DotImage 11.5\bin\4.6.2\x86\Atalasoft.dotImage.Lib.dll</HintPath>
+    </Reference>
+    <Reference Include="Atalasoft.dotImage.Office">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Atalasoft\DotImage 11.5\bin\4.6.2\x86\Atalasoft.dotImage.Office.dll</HintPath>
+    </Reference>
+    <Reference Include="Atalasoft.dotImage.Pdf">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Atalasoft\DotImage 11.5\bin\4.6.2\x86\Atalasoft.dotImage.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="Atalasoft.dotImage.PdfReader">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Atalasoft\DotImage 11.5\bin\4.6.2\x86\Atalasoft.dotImage.PdfReader.dll</HintPath>
+    </Reference>
+    <Reference Include="Atalasoft.dotImage.Raw">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Atalasoft\DotImage 11.5\bin\4.6.2\x86\Atalasoft.dotImage.Raw.dll</HintPath>
+    </Reference>
+    <Reference Include="Atalasoft.Shared">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Atalasoft\DotImage 11.5\bin\4.6.2\x86\Atalasoft.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="WinDemoHelperMethods.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
