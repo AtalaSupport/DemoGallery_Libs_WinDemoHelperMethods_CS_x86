@@ -6,6 +6,7 @@ using Atalasoft.Imaging.Codec.Jbig2;
 using Atalasoft.Imaging.Codec.Jpeg2000;
 using Atalasoft.Imaging.Codec.Pdf;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -16,6 +17,9 @@ using System.Windows.Forms;
 
 namespace WinDemoHelperMethods
 {
+    /// <summary>
+    /// This is a convenience struct used so we can quickly add the needed filters and decoders 
+    /// </summary>
     public struct ImageFormatInformation
     {
         public string Filter;
@@ -51,6 +55,8 @@ namespace WinDemoHelperMethods
         static HelperMethods()
         {
             // Decoders
+            // Putting RawDecoder first so that 
+            _decoderImageFormats.Add(new ImageFormatInformation(new RawDecoder(), "RAW Images", "*.dcr;*.dng;*.eff;*.mrw;*.nef;*.orf;*.pef;*.raf;*.srf;*.x3f;*.crw;*.cr2;*.tif;*.ppm"));
             _decoderImageFormats.Add(new ImageFormatInformation(new JpegDecoder(), "Joint Photographic Experts Group (*.jpg)", "*.jpg"));
             _decoderImageFormats.Add(new ImageFormatInformation(new PngDecoder(), "Portable Network Graphic (*.png)", "*.png"));
             _decoderImageFormats.Add(new ImageFormatInformation(new TiffDecoder(), "Tagged Image File (*.tif, *.tiff)", "*.tif;*.tiff"));
@@ -64,7 +70,6 @@ namespace WinDemoHelperMethods
             _decoderImageFormats.Add(new ImageFormatInformation(new GifDecoder(), "Graphics Interchange Format (*.gif)", "*.gif"));
             _decoderImageFormats.Add(new ImageFormatInformation(new TlaDecoder(), "Smaller Animals TLA (*.tla)", "*.tla"));
             _decoderImageFormats.Add(new ImageFormatInformation(new PcdDecoder(), "Kodak (tm) PhotoCD (*.pcd)", "*.pcd"));
-            _decoderImageFormats.Add(new ImageFormatInformation(new RawDecoder(), "RAW Images", "*.dcr;*.dng;*.eff;*.mrw;*.nef;*.orf;*.pef;*.raf;*.srf;*.x3f;*.crw;*.cr2;*.tif;*.ppm"));
 
             try { _decoderImageFormats.Add(new ImageFormatInformation(new DwgDecoder(), "Cad/Cam (*.dwg *.dxf)", "*.dwg;*.dxf")); }
             catch (AtalasoftLicenseException) { }
@@ -205,11 +210,36 @@ namespace WinDemoHelperMethods
 
         public static void PopulateDecoders(DecoderCollection col)
         {
+            // There are known issues with Raw Images that contain JPEG or TIFF previews
+            // the fix is to ensure we always put this one at the beginning of the collection if present
+            RawDecoder rawdec = GetRawDecoder(_decoderImageFormats);
+            if (rawdec != null)
+            {
+                col.Insert(0, rawdec);
+            }
+
             foreach (ImageFormatInformation info in _decoderImageFormats)
+            {
                 if (!col.Contains(info.Decoder))
+                {
                     col.Add(info.Decoder);
+                }
+            }
         }
 
+        private static RawDecoder GetRawDecoder(ArrayList decoderImageFormats)
+        {
+            foreach (ImageFormatInformation info in decoderImageFormats)
+            {
+                if (info.Decoder == null && info.Decoder is RawDecoder)
+                {
+                    return info.Decoder as RawDecoder;
+                }
+            }
+            return null;
+        }
+
+   
         public static ImageEncoder GetImageEncoder(int filterIndex)
         {
             // This needs to be decremented since File Dialog filters are 1 indexed
